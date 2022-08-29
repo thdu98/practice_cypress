@@ -1,0 +1,37 @@
+{
+  "name": "practice_cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thdu98/practice_cypress.git"
+  },
+  "author": "du truong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thdu98/practice_cypress/issues"
+  },
+  "homepage": "https://github.com/thdu98/practice_cypress#readme",
+  "devDependencies": {
+    "cypress": "^9.7.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-network-idle": "^1.10.0",
+    "cypress-xpath": "^2.0.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/reports/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
+  },
+  "dependencies": {
+    "multiple-cucumber-html-reporter": "^2.0.0"
+  }
+}
