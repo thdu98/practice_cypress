@@ -15,3 +15,14 @@ phases:
   build:
     commands:
       - npx cypress run --browser chromium
+
+  post_build:
+    commands:
+      - npm run chromium-report
+
+artifacts:
+  files:
+    - 'reports/**/*'
+    - 'screenshots/**/*'
+    - 'videos/**/*'
+  base-directory: 'cypress'
