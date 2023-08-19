@@ -1,10 +1,15 @@
 {
   "name": "practice_cypress",
   "version": "1.0.0",
-  "description": "for practice cypress",
-  "main": "index.js",
+  "description": "practice cypress",
+  "main": "cypress.config.js",
+  "devDependencies": {
+    "@cypress/browserify-preprocessor": "^3.0.2",
+    "mocha": "^10.2.0"
+  },
   "scripts": {
-    "cy:open": "npx cypress open"
+    "open": "npx cypress open",
+    "run": "npx cypress run"
   },
   "repository": {
     "type": "git",
@@ -16,17 +21,23 @@
     "url": "https://github.com/thdu98/practice_cypress/issues"
   },
   "homepage": "https://github.com/thdu98/practice_cypress#readme",
-  "devDependencies": {
-    "@cypress/browserify-preprocessor": "^3.0.2",
-    "cypress": "^12.6.0"
-  },
   "dependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^15.1.4"
+    "@badeball/cypress-cucumber-preprocessor": "^18.0.4",
+    "cypress": "^12.17.4",
+    "cypress-xpath": "^2.0.1"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true,
     "stepDefinitions": [
-      "cypress/e2e/*.{js,ts}"
-    ]
+      "cypress/e2e/step_definition/*.js"
+    ],
+    "nonGlobalStepDefinitions": true,
+    "json": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber-json/cucumber.json"
+    },
+    "html": {
+      "enabled": true,
+      "output": "cypress/reports/html/html-report.html"
+    }
   }
 }

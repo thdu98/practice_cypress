@@ -11,10 +11,11 @@ async function setupNodeEvents(on, config) {
   // Make sure to return the config object as it might have been modified by the plugin.
   return config;
 }
-///
+
 module.exports = defineConfig({
   e2e: {
-    specPattern: "**/*.feature",
+    specPattern: "cypress/e2e/feature/*.feature",
+    defaultCommandTimeout: 10000,
     setupNodeEvents,
   },
 });
