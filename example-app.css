@@ -1,0 +1,40 @@
+/* Styles for the popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    min-width: 15px; /* Minimum width for the popup */
+    max-width: 90%; /* Maximum width for the popup */
+    padding: 10px;
+    color: #fff; /* White text color */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowed text */
+    text-overflow: ellipsis; /* Display ellipsis for overflowed text */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 999; /* Ensure pop-up is above the rest of the page content */
+}
+
+/* Show the popup when it's active */
+.popup.active {
+    display: block;
+}
+
+/* Styles for success message */
+.popup.success {
+    background-color: #b0e57c; /* Light green for success */
+}
+
+/* Styles for error message */
+.popup.error {
+    background-color: #ff6b6b; /* Dark red for error */
+}
+
+/* Close icon */
+.popup .close-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}

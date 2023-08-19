@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>API Call and Counter App</title>
+  <link rel="stylesheet" href="example-app.css">
 </head>
 <body>
 <h1>API Call and Counter App</h1>
@@ -17,8 +18,11 @@
 <!-- Button to trigger API call -->
 <button id="callButton">Call API</button>
 
-<!-- Element to display API result -->
-<div id="result"></div>
+<!-- Error popup -->
+<div id="errorPopup" class="popup">
+  <span id="closeErrorButton" class="close-icon">×</span>
+  <p id="errorText"></p>
+</div>
 
 <!-- Include the JavaScript file -->
 <script src="example-app.js"></script>

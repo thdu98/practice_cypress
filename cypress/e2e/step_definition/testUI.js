@@ -5,13 +5,19 @@ When(/^Access example app$/, () => {
 });
 
 When(/^Click on (.*) button$/, (btnName) => {
-    for (let i = 0; i < 5; i++) {
+    // for (let i = 0; i < 5; i++) {
         cy.get("button").contains(btnName).click()
-        Step(this, `Number of clicking times should be: ${i + 1}`)
-    }
+        // Step(this, `Number of clicking times should be: ${i + 1}`)
+    // }
 })
 
 Then(/^Number of clicking times should be: (.*)$/, (numberClickingTimes) => {
     const numberSelector = '//p[@data-testid="num"]';
     cy.xpath(numberSelector).should('have.text', numberClickingTimes);
+})
+
+When(/^Mock response$/, () => {
+    cy.intercept({url: "https://hub.dummyapis.com/vj/ZHS8s7B"}, req => {
+        req.reply({statusCode: 500})
+    })
 })

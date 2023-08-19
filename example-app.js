@@ -3,43 +3,66 @@ let count = 0;
 
 // Listen for a click event on a button
 document.querySelector('button').addEventListener('click', () => {
-    // Find the element with the attribute 'data-testid' set to 'num'
     const numElement = document.querySelector('[data-testid="num"]');
-
-    // Increment the counter
     count += 1;
 
-    // Use setTimeout to delay updating the displayed number
     setTimeout(() => {
         displayNumber(count);
-        // console.info(count1)
     }, 1000);
-
-    // Function to display the updated count
-    function displayNumber(count) {
-        numElement.textContent = count;
-    }
 });
+
+function displayNumber(count) {
+    const numElement = document.querySelector('[data-testid="num"]');
+    numElement.textContent = count;
+}
 
 // Listen for a click event on an element with the id 'callButton'
 document.getElementById('callButton').addEventListener('click', callAPI);
 
-// Function to call an API
 function callAPI() {
-    // Make an API call using the Fetch API
     fetch('https://hub.dummyapis.com/vj/ZHS8s7B')
-        .then(response => response.json())
-        .then(async data => {
-            // Process the API response here
-            await displayResult(data);
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('API call failed');
+            }
+            return true; // Indicate success
+        })
+        .then(success => {
+            if (success) {
+                showErrorPopup('API call successful', false); // Show success message
+            }
         })
         .catch(error => {
             console.error('Error while calling the API:', error);
+            showErrorPopup('API call failed', true); // Show error message
         });
 }
 
-// Function to display the API result
-function displayResult(data) {
-    // Display the API result within an element with the id 'result'
-    document.getElementById('result').textContent = JSON.stringify(data);
+function hideErrorPopup() {
+    const errorPopup = document.getElementById('errorPopup');
+    errorPopup.classList.remove('active');
+}
+
+function showErrorPopup(errorMessage, isError = true) {
+    const errorPopup = document.getElementById('errorPopup');
+    const errorText = document.getElementById('errorText');
+    const closeErrorButton = document.getElementById('closeErrorButton');
+
+    errorText.textContent = errorMessage;
+
+    // Determine the appropriate class based on the error type
+    if (isError) {
+        errorPopup.classList.add('error');
+    } else {
+        errorPopup.classList.add('success');
+    }
+
+    errorPopup.classList.add('active');
+
+    closeErrorButton.addEventListener('click', hideErrorPopup);
+
+    // Automatically hide the popup after 5 seconds
+    setTimeout(() => {
+        hideErrorPopup();
+    }, 5000);
 }
