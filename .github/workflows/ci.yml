@@ -21,10 +21,10 @@ jobs:
         if: failure()
         with:
           name: cypress-reports
-          path: cypress/reports
+          path: cypress/reports/html
       # Test run video was always captured, so this action uses "always()" condition
       - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: cypress-reports
-          path: cypress/reports
+          path: cypress/reports/html
